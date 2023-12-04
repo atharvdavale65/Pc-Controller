@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/atharvdavale65/Pc-Remote-Controller/blob/main/mobile-service%20(4).png" width="224px"/><br/>
+  <img src="https://github.com/atharvdavale65/Pc-Controller/blob/main/mobile-service%20(4).png" width="224px"/><br/>
   PC Remote Access / PC Controller
 </h1>
 <p align="center"><b>Control your laptop/computer using your Android Phone over Wi-Fi.</b></p>

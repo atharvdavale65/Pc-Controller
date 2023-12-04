@@ -27,7 +27,7 @@ Connect your phone and laptop/computer via hotspot on phone and wifi on laptop
 ###### Step 2 :
 Run the `Server.java` file (It will create a server and will accept the request from the client android phone)
 ###### Step 3 :
-- Tap on `CONNECT` button on the Home Screen <br><img src="https://github.com/atharvdavale65/Pc-Remote-Controller/blob/main/WhatsApp%20Image%202021-08-24%20at%201.32.49%20PM.jpeg" width="50px"/>
+- Tap on `CONNECT` button on the Home Screen <br><img src="https://github.com/atharvdavale65/Pc Controller/blob/main/WhatsApp%20Image%202021-08-24%20at%201.32.49%20PM.jpeg" width="50px"/>
 - Now you can control the pc and use the bottom navigation to use the features 🙂
 
 ## 📎 📱 Screenshots

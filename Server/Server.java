@@ -35,10 +35,10 @@ public class Server {
 		boolean rightpressed=false;
 		System.out.println("Server has started");
 		try {
-            // Get the local host
+           
             InetAddress localhost = InetAddress.getLocalHost();
             
-            // Print the IP address
+            
             System.out.println("Your current IP address is: " + localhost.getHostAddress());
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -47,11 +47,11 @@ public class Server {
  
 	    try{
 	    	robot = new Robot();
-			server = new ServerSocket(SERVER_PORT); //Create a server socket on port 8998
-			client = server.accept(); //Listens for a connection to be made to this socket and accepts it
+			server = new ServerSocket(SERVER_PORT); 
+			client = server.accept(); 
 			System.out.println("Client is connected ");
 			
-			in = new BufferedReader(new InputStreamReader(client.getInputStream())); //the input stream where data will come from client
+			in = new BufferedReader(new InputStreamReader(client.getInputStream())); 
 
 		}catch (IOException e) {
 			System.out.println("Error in opening Socket");
@@ -61,17 +61,17 @@ public class Server {
 			System.exit(-1);
 		}
 			
-		//read input from client while it is connected
+		
 	    while(isConnected){
 	        try{
-			line = in.readLine(); //read input from client
-			System.out.println(line); //print whatever we get from client
+			line = in.readLine(); 
+			System.out.println(line); 
 			String temp = "";
 			if(line.contains("Brightness")){
 				temp = line;
 			}
-			// String temp = line;
-			// System.out.println(temp.length());
+			
+			
 			if(temp.length() >0 && temp.substring(0,10).equals("Brightness")){
 				int n = line.length();
 				String intensity = line.substring(10,n);
@@ -80,225 +80,225 @@ public class Server {
 
 			}
 			
-			//if user clicks on next
+			
 			if(line.equalsIgnoreCase("next")){
-				//Simulate press and release of key 'n'
+				
 				robot.keyPress(KeyEvent.VK_N);
 				robot.keyRelease(KeyEvent.VK_N);
 			}
-			//if user clicks on previous
+			
 			else if(line.equalsIgnoreCase("previous")){
-				//Simulate press and release of key 'p'
+				
 				robot.keyPress(KeyEvent.VK_P);
 				robot.keyRelease(KeyEvent.VK_P);		        	
 			}
-			//if user clicks on play/pause
+			
 			else if(line.equalsIgnoreCase("play")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_SPACE);
 				robot.keyRelease(KeyEvent.VK_SPACE);
 			}
-			//input will come in x,y format if user moves mouse on mousepad
+			
 			else if(line.contains(",")){
-				float movex=Float.parseFloat(line.split(",")[0]);//extract movement in x direction
-				float movey=Float.parseFloat(line.split(",")[1]);//extract movement in y direction
-				Point point = MouseInfo.getPointerInfo().getLocation(); //Get current mouse position
+				float movex=Float.parseFloat(line.split(",")[0]);
+				float movey=Float.parseFloat(line.split(",")[1]);
+				Point point = MouseInfo.getPointerInfo().getLocation(); 
 				float nowx=point.x;
 				float nowy=point.y;
-				robot.mouseMove((int)(nowx+movex),(int)(nowy+movey));//Move mouse pointer to new location
+				robot.mouseMove((int)(nowx+movex),(int)(nowy+movey));
 			}
-			//if user taps on mousepad to simulate a left click
+			
 			else if(line.contains("left_click")){
-				//Simulate press and release of mouse button 1(makes sure correct button is pressed based on user's dexterity)
+				
 				robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 				robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 			}
 
-			//if user taps on right click button to simulate a right click
+			
 			else if(line.contains("right_click")){
-				//Simulate press and release of mouse button 1(makes sure correct button is pressed based on user's dexterity)
+				
 				robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
 				robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
 			}
 
-			//if user clicks Space
+			
 			else if(line.equalsIgnoreCase("space")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_SPACE);
 				robot.keyRelease(KeyEvent.VK_SPACE);
 			}
 
-			//if user clicks Caps lock
+			
 			else if(line.equalsIgnoreCase("caps_lock")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_CAPS_LOCK );
 				robot.keyRelease(KeyEvent.VK_CAPS_LOCK );
 			}
 
-			//if user clicks Delete
+			
 			else if(line.equalsIgnoreCase("delete")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_DELETE  );
 				robot.keyRelease(KeyEvent.VK_DELETE  );
 			}
 
-			//if user clicks Down arrow key
+			
 			else if(line.equalsIgnoreCase("down_arrow_key")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_DOWN  );
 				robot.keyRelease(KeyEvent.VK_DOWN  );
 			}
 
-			//if user clicks Down Enter
+			
 			else if(line.equalsIgnoreCase("enter")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_ENTER   );
 				robot.keyRelease(KeyEvent.VK_ENTER   );
 			}
 
-			//if user clicks ESC
+			
 			else if(line.equalsIgnoreCase("esc")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_ESCAPE    );
 				robot.keyRelease(KeyEvent.VK_ESCAPE    );
 			}
 
-			//if user clicks F1
+			
 			else if(line.equalsIgnoreCase("f_1")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F1    );
 				robot.keyRelease(KeyEvent.VK_F1    );
 			}
 
-			//if user clicks F2
+			
 			else if(line.equalsIgnoreCase("f_2")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F2    );
 				robot.keyRelease(KeyEvent.VK_F2    );
 			}
 
-			//if user clicks F3
+			
 			else if(line.equalsIgnoreCase("f_3")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F3    );
 				robot.keyRelease(KeyEvent.VK_F3    );
 			}
 
-			//if user clicks F4
+			
 			else if(line.equalsIgnoreCase("f_4")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F4   );
 				robot.keyRelease(KeyEvent.VK_F4    );
 			}
 
-			//if user clicks F5
+			
 			else if(line.equalsIgnoreCase("f_5")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F5    );
 				robot.keyRelease(KeyEvent.VK_F5    );
 			}
 
-			//if user clicks F6
+			
 			else if(line.equalsIgnoreCase("f_6")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F6    );
 				robot.keyRelease(KeyEvent.VK_F6    );
 			}
 
-			//if user clicks F7
+			
 			else if(line.equalsIgnoreCase("f_7")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F7    );
 				robot.keyRelease(KeyEvent.VK_F7    );
 			}
 
-			//if user clicks F8
+			
 			else if(line.equalsIgnoreCase("f_8")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F8    );
 				robot.keyRelease(KeyEvent.VK_F8    );
 			}
 
-			//if user clicks F9
+			
 			else if(line.equalsIgnoreCase("f_9")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F9    );
 				robot.keyRelease(KeyEvent.VK_F9    );
 			}
 
-			//if user clicks F10
+			
 			else if(line.equalsIgnoreCase("f_10")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F10    );
 				robot.keyRelease(KeyEvent.VK_F10    );
 			}
 
-			//if user clicks F11
+			
 			else if(line.equalsIgnoreCase("f_11")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F11    );
 				robot.keyRelease(KeyEvent.VK_F11    );
 			}
 
-			//if user clicks F12
+			
 			else if(line.equalsIgnoreCase("f_12")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_F12    );
 				robot.keyRelease(KeyEvent.VK_F12    );
 			}
 
-			//if user clicks Insert
+			
 			else if(line.equalsIgnoreCase("insert")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_INSERT     );
 				robot.keyRelease(KeyEvent.VK_INSERT     );
 			}
 
-			//if user clicks Up arrow key
+			
 			else if(line.equalsIgnoreCase("up_arrow_key")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_UP  );
 				robot.keyRelease(KeyEvent.VK_UP  );
 			}
 
-			//if user clicks Left arrow key
+			
 			else if(line.equalsIgnoreCase("left_arrow_key")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_LEFT  );
 				robot.keyRelease(KeyEvent.VK_LEFT  );
 			}
 
-			//if user clicks Right arrow key
+			
 			else if(line.equalsIgnoreCase("right_arrow_key")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_RIGHT  );
 				robot.keyRelease(KeyEvent.VK_RIGHT  );
 			}
 
-			//if user clicks Tab
+			
 			else if(line.equalsIgnoreCase("tab")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_TAB  );
 				robot.keyRelease(KeyEvent.VK_TAB  );
 			}
 
-			//if user clicks Windows
+			
 			else if(line.equalsIgnoreCase("windows")){
 				
 				robot.keyPress(KeyEvent.VK_WINDOWS  );
 				robot.keyRelease(KeyEvent.VK_WINDOWS  );
 			}
 
-			//if user clicks Subtract
+			
 			else if(line.equalsIgnoreCase("subtract")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_SUBTRACT   );
 				robot.keyRelease(KeyEvent.VK_SUBTRACT   );
 			}
 
-			//if user clicks Plus
+			
 			else if(line.equalsIgnoreCase("plus")){
-				//Simulate press and release of spacebar
+				
 				 robot.keyPress(KeyEvent.VK_SHIFT);
 			        robot.keyPress(KeyEvent.VK_EQUALS);
 			        robot.keyRelease(KeyEvent.VK_EQUALS);
@@ -306,21 +306,21 @@ public class Server {
 			       
 			}
 
-			//if user clicks ALT
+			
 			else if(line.equalsIgnoreCase("alt")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_ALT    );
 				robot.keyRelease(KeyEvent.VK_ALT    );
 			}
 
-			//if user clicks HOME
+			
 			else if(line.equalsIgnoreCase("home")){
-				//Simulate press and release of spacebar
+				
 				robot.keyPress(KeyEvent.VK_HOME     );
 				robot.keyRelease(KeyEvent.VK_HOME     );
 			}
 
-			//if user clicks Power off
+			
 			else if(line.equalsIgnoreCase("power_off")){
 				
 				Runtime runtime = Runtime.getRuntime();
@@ -329,7 +329,7 @@ public class Server {
 
 			}
 
-			//if user clicks lock screen
+			
 			else if(line.equalsIgnoreCase("lock_screen")){
 				
 				Runtime runtime = Runtime.getRuntime();
@@ -342,14 +342,14 @@ public class Server {
 
 			}
 
-			//if user clicks sleep the pc
+			
 			else if(line.equalsIgnoreCase("sleep_pc")){
 				
 				Runtime.getRuntime().exec("Rundll32.exe powrprof.dll,SetSuspendState Sleep");
 
 			}
 
-			//if user clicks restart the pc
+			
 			else if(line.equalsIgnoreCase("restart")){
 				
 				Runtime runtime = Runtime.getRuntime();
@@ -358,10 +358,10 @@ public class Server {
 			}
 
 
-			//Exit if user ends the connection
+			
 			else if(line.equalsIgnoreCase("exit")){
 				isConnected=false;
-				//Close server and client socket
+				
 				server.close();
 				client.close();
 			}
@@ -871,43 +871,43 @@ public class Server {
 			        break;
 
 			        
-			        // case '-': doType(VK_MINUS); break;
-			        // case '=': doType(VK_EQUALS); break;
-			        // case '~': doType(VK_BACK_QUOTE); break;
-			        // case '!': doType(VK_SHIFT, VK_EXCLAMATION_MARK); break;
-			        // case '@': doType(VK_SHIFT, VK_AT); break;
-			        // case '#': doType(VK_SHIFT, VK_NUMBER_SIGN); break;
-			        // case '$': doType(VK_SHIFT, VK_DOLLAR); break;
-			        // case '%': doType(VK_SHIFT, VK_5); break;
-			        // case '^': doType(VK_SHIFT, VK_CIRCUMFLEX); break;
-			        // case '&': doType(VK_SHIFT, VK_AMPERSAND); break;
-			        // case '*': doType(VK_SHIFT, VK_ASTERISK); break;
-			        // case '(': doType(VK_LEFT_PARENTHESIS); break;
-			        // case ')': doType(VK_RIGHT_PARENTHESIS); break;
-			        // case '_': doType(VK_SHIFT, VK_UNDERSCORE); break;
-			        // case '+': doType(VK_SHIFT, VK_PLUS); break;
-			        // case '\t': doType(VK_TAB); break;
-			        // case '\n': doType(VK_ENTER); break;
-			        // case '[': doType(VK_OPEN_BRACKET); break;
-			        // case ']': doType(VK_CLOSE_BRACKET); break;
-			        // case '\\': doType(VK_BACK_SLASH); break;
-			        // case '{': doType(VK_SHIFT, VK_OPEN_BRACKET); break;
-			        // case '}': doType(VK_SHIFT, VK_CLOSE_BRACKET); break;
-			        // case '|': doType(VK_SHIFT, VK_BACK_SLASH); break;
-			        // case ';': doType(VK_SEMICOLON); break;
-			        // case ':': doType(VK_SHIFT, VK_COLON); break;
-			        // case '\'': doType(VK_QUOTE); break;
-			        // case '"': doType(VK_SHIFT, VK_QUOTEDBL); break;
-			        // case ',': doType(VK_COMMA); break;
-			        // case '<': doType(VK_SHIFT, VK_COMMA); break;
-			        // case '.': doType(VK_PERIOD); break;
-			        // case '>': doType(VK_SHIFT, VK_PERIOD); break;
-			        // case '/': doType(VK_SLASH); break;
-			        // case '?': doType(VK_SHIFT, VK_SLASH); break;
-			        // case ' ': doType(VK_SPACE); break;
-			        // case '\b': doType(VK_BACK_SPACE); break;
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
 			        default:
-            // throw new IllegalArgumentException("Cannot type character " + line);
+            
         }
 			}
 	        } catch (IOException e) {
@@ -917,16 +917,16 @@ public class Server {
       	}
 	}
 
-// public void doType(int... keyCodes) {
-//         int length = keyCodes.length;
-//         for (int i = 0; i < length; i++) {
-//             robot.keyPress(keyCodes[i]);
-//         }
-//         robot.delay(10);
-//         for (int i = length - 1; i >= 0; i--) {
-//             robot.keyRelease(keyCodes[i]);
-//         }
-//     }
+
+
+
+
+
+
+
+
+
+
 
 	
 

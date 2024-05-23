@@ -21,7 +21,6 @@ import java.io.InputStreamReader;
 import java.util.*;
  
 public class Server {
-	
 	private static ServerSocket server = null;
 	private static Socket client = null;
 	private static BufferedReader in = null;
@@ -29,22 +28,16 @@ public class Server {
 	private static boolean isConnected=true;
 	private static Robot robot;
 	private static final int SERVER_PORT = 8080;  
- 
 	public static void main(String[] args) {
 		boolean leftpressed=false;
 		boolean rightpressed=false;
 		System.out.println("Server has started");
 		try {
-           
             InetAddress localhost = InetAddress.getLocalHost();
-            
-            
             System.out.println("Your current IP address is: " + localhost.getHostAddress());
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-		
- 
 	    try{
 	    	robot = new Robot();
 			server = new ServerSocket(SERVER_PORT); 

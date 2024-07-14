@@ -129,7 +129,7 @@ public class Server {
 			}
 
 			
-			else if(line.equalsIgnoreCase("delete")){
+			else if(line.equalsIgnoreCase("f_1")){
 				
 				robot.keyPress(KeyEvent.VK_DELETE  );
 				robot.keyRelease(KeyEvent.VK_DELETE  );

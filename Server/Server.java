@@ -93,8 +93,8 @@ public class Server {
 			}
 			
 			else if(line.contains(",")){
-				float movex=Float.parseFloat(line.split(",")[0]);
-				float movey=Float.parseFloat(line.split(",")[1]);
+				float movex=Float.(line.split(",")[0]);
+				float movey=Float.(line.split(",")[1]);
 				Point point = MouseInfo.getPointerInfo().getLocation(); 
 				float nowx=point.x;
 				float nowy=point.y;
@@ -103,8 +103,8 @@ public class Server {
 			
 			else if(line.contains("left_click")){
 				
-				robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-				robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				robot.mousePress
+				robot.mouseRelease
 			}
 
 			
